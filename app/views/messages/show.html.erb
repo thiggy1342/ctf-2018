@@ -1,0 +1,19 @@
+<h1>Conversation <%= @conversation.id.to_s %> Message <%= @message.id.to_s %></h1>
+<p>
+  <strong>From <%= @message.from %></strong>
+</p>
+<p>
+  <strong>Message Body:</strong>
+</p>
+<p>
+  <%= @message.content %>
+</p>
+<h3>Respond back</h3>
+<%= form_with(model: [ @conversation, @conversation.messages.build ], local: true) do |form| %>
+  <p>
+    <%= form.hidden_field :to, value: @conversation.user2 %>
+    <%= form.hidden_field :from, value: @conversation.user1 %>
+    <%= form.text_area :content %><br>
+    <%= form.submit %>
+  </p>
+<% end %>

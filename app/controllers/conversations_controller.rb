@@ -12,4 +12,8 @@ class ConversationsController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
   end
+
+  def index
+    @conversations = Conversation.all
+  end
 end

@@ -1,3 +1,7 @@
 <h1>Conversations</h1>
 
-<%= link_to 'New Conversation', new_conversation_path %>
+<div id="convo-count"><strong>Current Conversation Count: <%=@conversations.count %></strong></div>
+
+<% @conversations.each do |convo| %>
+  <%= link_to(conversation_path(convo)) %>
+<% end %>
