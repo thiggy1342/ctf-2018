@@ -6,6 +6,13 @@ class MessagesController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
     @message = @conversation.messages.create(message_params)
 
+    # writes flat file for selenium script to read later
+    if @message[:user_generated]
+      f = File.new("cache/messages/c_#{@conversation[:id]}_m_#{@message[:id]}.txt", "w")
+      f.write "/conversations/#{@conversation[:id]}/messages/#{@message[:id]}"
+      f.close
+    end
+
     redirect_to conversation_path(@conversation)
   end
 
@@ -16,6 +23,6 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:to, :from, :content)
+    params.require(:message).permit(:to, :from, :content, :user_generated)
   end
 end

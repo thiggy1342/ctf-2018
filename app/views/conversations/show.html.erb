@@ -14,6 +14,7 @@
   <p>
     <%= form.hidden_field :to, value: @conversation.user1 %>
     <%= form.hidden_field :from, value: @conversation.user2 %>
+    <%= form.hidden_field :user_generated, value: true %>
     <%= form.text_area :content %><br>
     <%= form.submit %>
   </p>
