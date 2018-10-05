@@ -1,10 +1,9 @@
 class ConversationsController < ApplicationController
   def new
-
   end
 
   def create
-    @conversation = Conversation.new({user1: params[:conversation][:user], user2: 'You'})
+    @conversation = Conversation.new({user1: 'Bill Gates', user2: params[:useranme]})
     @conversation.save
 
     redirect_to @conversation

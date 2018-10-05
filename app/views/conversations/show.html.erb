@@ -2,14 +2,15 @@
 
 <h3>Message History</h3>
 <% if @conversation.messages %>
-  <%= @conversation.messages.each do |message| %>
+  <% @conversation.messages.each do |message| %>
     <strong><%= message.from %> to <%= message.to %></strong><br>
     <%= message.content %><br>
+    <br>
   <% end %>
 <% end %>
 
 <h3>Send New Message</h3>
-<%= form_with scope: :message, url: conversation_messages_path(@conversation), local: true do |form| %>
+<%= form_with(model: [ @conversation, @conversation.messages.build ], local: true) do |form| %>
   <p>
     <%= form.hidden_field :to, value: @conversation.user1 %>
     <%= form.hidden_field :from, value: @conversation.user2 %>

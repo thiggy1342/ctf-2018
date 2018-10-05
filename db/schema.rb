@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 2018_10_04_201043) do
     t.string "to"
     t.string "from"
     t.string "content"
-    t.integer "Conversation_id"
+    t.integer "conversation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Conversation_id"], name: "index_messages_on_Conversation_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
   end
 
 end

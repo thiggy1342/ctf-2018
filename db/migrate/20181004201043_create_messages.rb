@@ -4,7 +4,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.string :to
       t.string :from
       t.string :content
-      t.references :Conversation, foreign_key: true
+      t.belongs_to :conversation, index: true
 
       t.timestamps
     end
