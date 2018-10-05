@@ -1,0 +1,19 @@
+<h1>Conversation with <%= @conversation.user1 %></h1>
+
+<h3>Message History</h3>
+<% if @conversation.messages %>
+  <%= @conversation.messages.each do |message| %>
+    <strong><%= message.from %> to <%= message.to %></strong><br>
+    <%= message.content %><br>
+  <% end %>
+<% end %>
+
+<h3>Send New Message</h3>
+<%= form_with scope: :message, url: conversation_messages_path(@conversation), local: true do |form| %>
+  <p>
+    <%= form.hidden_field :to, value: @conversation.user1 %>
+    <%= form.hidden_field :from, value: @conversation.user2 %>
+    <%= form.text_area :content %><br>
+    <%= form.submit %>
+  </p>
+<% end %>

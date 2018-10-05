@@ -1,0 +1,11 @@
+<h1>Start a new conversation</h1>
+
+<%= form_with scope: :conversation, url: conversations_path, local: true do |form|  %>
+  <p>
+    <%= form.label :user %><br>
+    <%= form.text_field :user%><br>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
