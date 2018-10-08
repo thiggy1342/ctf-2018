@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_182338) do
+ActiveRecord::Schema.define(version: 2018_10_08_155529) do
 
   create_table "conversations", force: :cascade do |t|
     t.string "user1"
     t.string "user2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "display_html?", default: false
   end
 
   create_table "messages", force: :cascade do |t|
