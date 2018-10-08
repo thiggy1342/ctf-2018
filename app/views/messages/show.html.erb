@@ -6,7 +6,7 @@
   <strong>Message Body:</strong>
 </p>
 <p>
-  <%= @message.content %>
+  <%= raw @message.content %>
 </p>
 <h3>Respond back</h3>
 <%= form_with(model: [ @conversation, @conversation.messages.build ], local: true) do |form| %>
