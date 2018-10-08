@@ -20,8 +20,8 @@ def get_message
       "pls send cookies",
       "oatmeal raisin, chocolate chip, snickerdoodle....any would do",
       "C  O  O  K  I  E  S",
-      "https://www.reddit.com/r/cookies",
-      "https://www.bing.com/images/search?q=cookies"
+      "you should check out https://www.reddit.com/r/cookies",
+      "that's nice, but https://www.bing.com/images/search?q=cookies"
   ]
   messages[rand(messages.length-1)]
 end
