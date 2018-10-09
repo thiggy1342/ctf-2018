@@ -1,11 +1,10 @@
 require 'selenium-webdriver'
-require 'pry'
 
 def bill_gates(message_endpoint)
-  caps = Selenium::WebDriver::Remote::Capabilities.new
-  caps["acceptInsecureCerts"] = true
-  driver = Selenium::WebDriver.for(:remote, url: "http://localhost:4444/wd/hub", desired_capabilities: :chrome)
-  # driver = Selenium::WebDriver.for(:chrome, desired_capabilities: :chrome)
+  # caps = Selenium::WebDriver::Remote::Capabilities.new
+  # caps["acceptInsecureCerts"] = true
+  # driver = Selenium::WebDriver.for(:remote, url: "http://localhost:4444/wd/hub", desired_capabilities: :chrome)
+  driver = Selenium::WebDriver.for(:chrome, desired_capabilities: :chrome)
   driver.navigate.to("http://BigBillyMoneyBags:21b341bf77e44006eeaecf446d4646c546d399792951b989a572ee6dc3240333@0.0.0.0:15123#{message_endpoint}")
   driver.manage.add_cookie(name: "flag", value: "DefinitelyNotFreddieVonChimpenheimer")
   sleep 1
