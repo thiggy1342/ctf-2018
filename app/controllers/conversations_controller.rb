@@ -10,7 +10,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.find(params[:id])
+    @conversation = Conversation.friendly.find(params[:id])
   end
 
   def index
@@ -18,7 +18,7 @@ class ConversationsController < ApplicationController
   end
 
   def display_elements
-    @conversation = Conversation.find(params[:conversation_id])
+    @conversation = Conversation.friendly.find(params[:conversation_id])
     if @conversation[:display_html?]
       @conversation[:display_html?] = false
     else
@@ -29,7 +29,7 @@ class ConversationsController < ApplicationController
   end
 
   def clear_history
-    @conversation = Conversation.find(params[:conversation_id])
+    @conversation = Conversation.friendly.find(params[:conversation_id])
     @conversation.messages.delete_all
     redirect_to @conversation
   end

@@ -3,13 +3,13 @@ class MessagesController < ApplicationController
                                  only: [:show]
 
   def create
-    @conversation = Conversation.find(params[:conversation_id])
+    @conversation = Conversation.friendly.find(params[:conversation_id])
     @message = @conversation.messages.create(message_params)
 
     # writes flat file for selenium script to read later
     if @message[:user_generated]
-      f = File.new("cache/messages/c_#{@conversation[:id]}_m_#{@message[:id]}.txt", "w")
-      f.write "/conversations/#{@conversation[:id]}/messages/#{@message[:id]}"
+      f = File.new("cache/messages/c_#{@conversation[:hash_id]}_m_#{@message[:id]}.txt", "w")
+      f.write "/conversations/#{@conversation[:hash_id]}/messages/#{@message[:id]}"
       f.close
     end
 
@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.find(params[:conversation_id])
+    @conversation = Conversation.friendly.find(params[:conversation_id])
     @message = Message.find(params[:id])
   end
 

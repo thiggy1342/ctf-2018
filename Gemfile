@@ -61,3 +61,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'selenium-webdriver', '3.14.0'
+gem 'friendly_id'

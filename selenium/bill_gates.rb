@@ -1,4 +1,5 @@
 require 'selenium-webdriver'
+require 'pry'
 
 def bill_gates(message_endpoint)
   # caps = Selenium::WebDriver::Remote::Capabilities.new
