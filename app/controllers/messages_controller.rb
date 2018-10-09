@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
       f.close
     end
 
-    redirect_to conversation_path(@conversation)
+    redirect_to @conversation
   end
 
   def show
