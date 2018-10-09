@@ -33,6 +33,6 @@ Dir["cache/messages/*.txt"].each do |filename|
     f = File.open(filename, "r")
     bill_gates(f.read)
     f.close
-    # File.delete(filename)
+    File.delete(filename)
   }.join
 end
