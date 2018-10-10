@@ -14,8 +14,8 @@
 
   <div class="row">
     <div class="col-lg">
-      <h3>Message History</h3>
       <% if @conversation.messages %>
+        <h3>Message History</h3>
         <% @conversation.messages.each do |message| %>
           <% if message[:from] == "Anon" %>
             <strong style="color:blue"> From <%= message[:from] %> to Me</strong><br>
