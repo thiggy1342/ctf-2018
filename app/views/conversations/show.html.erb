@@ -17,7 +17,11 @@
       <h3>Message History</h3>
       <% if @conversation.messages %>
         <% @conversation.messages.each do |message| %>
-          <strong><%= message[:from] %> to <%= message[:to] %></strong><br>
+          <% if message[:from] == "Anon" %>
+            <strong style="color:blue"> From <%= message[:from] %> to Me</strong><br>
+          <% else %>
+            <strong style="color:red"> From Me to <%= message[:to] %></strong><br>
+          <% end %>
           <% if @conversation[:display_html?] %>
             <%= raw message.content %><br>
           <% else %>
@@ -50,6 +54,9 @@
         <%= form.submit %>
       </p>
     <% end %>
+  </div>
+  <div class="row">
+    <p style="color:red;"><strong>Note: </strong>Due to the extremely secure design of this service, it may take up to a minute for messages to be delivered.</p>
   </div>
 
 </div>
