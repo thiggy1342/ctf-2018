@@ -258,3 +258,15 @@ puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
 puma (3.12.0) lib/puma/server.rb:472:in `process_client'
 puma (3.12.0) lib/puma/server.rb:332:in `block in run'
 puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+[67320] ! Terminating timed out worker: 67334
+[67320] ! Terminating timed out worker: 67335
+[67320] ! Out-of-sync worker list, no 67335 worker
+[67320] ! Out-of-sync worker list, no 67334 worker
+[67320] - Worker 0 (pid: 67749) booted, phase: 0
+[67320] - Worker 1 (pid: 67750) booted, phase: 0
+[67320] ! Terminating timed out worker: 67749
+[67320] ! Terminating timed out worker: 67750
+[67320] ! Out-of-sync worker list, no 67750 worker
+[67320] ! Out-of-sync worker list, no 67749 worker
+[67320] - Worker 1 (pid: 67794) booted, phase: 0
+[67320] - Worker 0 (pid: 67793) booted, phase: 0

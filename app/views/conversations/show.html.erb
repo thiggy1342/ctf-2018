@@ -3,7 +3,7 @@
     function timedRefresh() {
         var currentContent = document.getElementById("message_content").value;
         window.location.href=window.location.pathname+"?"+"content="+currentContent;
-        location.reload(true);
+        return location.reload(true);
     }
     setTimeout(function(){window.onload = timedRefresh();},30000);
 </script>
