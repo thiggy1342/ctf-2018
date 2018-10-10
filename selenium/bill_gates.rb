@@ -21,15 +21,16 @@ end
 
 def get_message
   messages = [
-      "sry i've got like 42 tabs open in edge rn",
+      "sry i've got like 42 tabs open in chrome rn",
       "i could really go for some cookies right about meow",
       "y tho",
-      "let me bing that for you...",
+      "http://lmgtfy.com/?s=k&q=how+do+I+mail+cookies",
       "pls send cookies",
       "oatmeal raisin, chocolate chip, snickerdoodle....any would do",
       "C  O  O  K  I  E  S",
       "you should check out https://www.reddit.com/r/cookies",
-      "that's nice, but https://www.bing.com/images/search?q=cookies"
+      "try and beat my high score, n00b http://fastfives.mailchimp.com/",
+      "bc I look fly in cavendish, that's why!"
   ]
   messages[rand(messages.length-1)]
 end
