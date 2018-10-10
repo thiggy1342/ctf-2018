@@ -1,0 +1,44 @@
+=== puma startup: 2018-10-09 19:02:04 +0000 ===
+[20144] * Starting control server on unix:///tmp/puma-status-1539111724362-20144
+[20144] - Worker 0 (pid: 20188) booted, phase: 0
+[20144] - Worker 1 (pid: 20193) booted, phase: 0
+[20144] - Gracefully shutting down workers...
+[20144] === puma shutdown: 2018-10-09 19:04:03 +0000 ===
+[20144] - Goodbye!
+Exiting
+=== puma startup: 2018-10-09 19:33:18 +0000 ===
+[21685] * Starting control server on unix:///tmp/puma-status-1539113598287-21685
+[21685] - Worker 1 (pid: 21731) booted, phase: 0
+[21685] - Worker 0 (pid: 21727) booted, phase: 0
+[21685] - Gracefully shutting down workers...
+[21685] === puma shutdown: 2018-10-09 19:33:34 +0000 ===
+[21685] - Goodbye!
+=== puma startup: 2018-10-09 19:34:43 +0000 ===
+[21877] * Starting control server on unix:///tmp/puma-status-1539113683515-21877
+[21877] - Worker 0 (pid: 21919) booted, phase: 0
+[21877] - Worker 1 (pid: 21923) booted, phase: 0
+[21877] - Gracefully shutting down workers...
+[21877] === puma shutdown: 2018-10-09 19:34:49 +0000 ===
+[21877] - Goodbye!
+=== puma startup: 2018-10-09 19:40:18 +0000 ===
+[22004] * Starting control server on unix:///tmp/puma-status-1539114018298-22004
+[22047] + Gemfile in context: /home/adam/ctf-2018/Gemfile
+[22051] + Gemfile in context: /home/adam/ctf-2018/Gemfile
+[22004] - Worker 1 (pid: 22051) booted, phase: 0
+[22004] - Worker 0 (pid: 22047) booted, phase: 0
+[22004] - Gracefully shutting down workers...
+[22004] === puma shutdown: 2018-10-09 19:40:22 +0000 ===
+[22004] - Goodbye!
+=== puma startup: 2018-10-09 19:44:26 +0000 ===
+[22401] * Starting control server on unix:///tmp/puma-status-1539114266530-22401
+[22460] + Gemfile in context: /home/adam/ctf-2018/Gemfile
+[22464] + Gemfile in context: /home/adam/ctf-2018/Gemfile
+[22401] - Worker 1 (pid: 22464) booted, phase: 0
+[22401] - Worker 0 (pid: 22460) booted, phase: 0
+[22401] - Gracefully shutting down workers...
+=== puma startup: 2018-10-09 19:58:42 +0000 ===
+[23049] * Starting control server on unix:///tmp/puma-status-1539115122873-23049
+[23108] + Gemfile in context: /home/adam/ctf-2018/Gemfile
+[23112] + Gemfile in context: /home/adam/ctf-2018/Gemfile
+[23049] - Worker 0 (pid: 23108) booted, phase: 0
+[23049] - Worker 1 (pid: 23112) booted, phase: 0
