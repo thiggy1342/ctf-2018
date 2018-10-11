@@ -3,17 +3,15 @@ require 'selenium-webdriver'
 def bill_gates(message_endpoint)
   puts "Beginning Selenium browser session."
   begin
-    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => [ "--no-sandbox", "--headless", "--disable-gpu", "--window-size=1920x1080"] })
-    caps["nogui"] = true
-    caps["acceptInsecureCerts"] = true
+    #caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => [ "--no-sandbox", "--headless", "--disable-gpu", "--window-size=1920x1080"] })
     #     #driver = Selenium::WebDriver.for(:chrome, driver_path: "/usr/local/share/chromedriver", desired_capabilities: caps)
     client = Selenium::WebDriver::Remote::Http::Default.new
-    client.read_timeout = 10
-    driver = Selenium::WebDriver.for(:remote, url: "http://localhost:4444/wd/hub", desired_capabilities: caps, http_client: client)
+    client.read_timeout = 60
+    driver = Selenium::WebDriver.for(:remote, url: "http://localhost:4444/wd/hub", desired_capabilities: :chrome, http_client: client)
     driver.manage.timeouts.implicit_wait = 3
     driver.navigate.to("http://BigBillyMoneyBags:21b341bf77e44006eeaecf446d4646c546d399792951b989a572ee6dc3240333@192.168.0.1:15123#{message_endpoint}")
     driver.manage.add_cookie(name: "flag", value: "DefinitelyNotFreddieVonChimpenheimer")
-    sleep 1
+    sleep 2
     driver.find_element(id:"message_content").send_keys get_message
     driver.find_element(xpath: "//input[@value='Create Message']").click
     driver.close
@@ -45,7 +43,7 @@ Dir[File.expand_path(File.dirname(__FILE__))+"/../cache/messages/*.txt"].each do
     f = File.open(filename, "r")
     bill_gates(f.read)
     f.close
-    File.delete(filename)
+    #File.delete(filename)
   # }.join
 end
 
