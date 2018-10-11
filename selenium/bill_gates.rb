@@ -1,13 +1,17 @@
 require 'selenium-webdriver'
 
-def bill_gates(message_endpoint)
+def bill_gates(message_endpoint, js_enabled=true, attempt=1)
   puts "Beginning Selenium browser session."
   begin
-    #caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => [ "--no-sandbox", "--headless", "--disable-gpu", "--window-size=1920x1080"] })
+    chrome_opts = [ "--no-sandbox", "--headless", "--disable-gpu", "--window-size=1920x1080"]
+    if !js_enabled
+      chrome_opts.push('--disable-javascript')
+    end
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => chrome_opts })
     #     #driver = Selenium::WebDriver.for(:chrome, driver_path: "/usr/local/share/chromedriver", desired_capabilities: caps)
     client = Selenium::WebDriver::Remote::Http::Default.new
     client.read_timeout = 60
-    driver = Selenium::WebDriver.for(:remote, url: "http://localhost:4444/wd/hub", desired_capabilities: :chrome, http_client: client)
+    driver = Selenium::WebDriver.for(:remote, url: "http://localhost:4444/wd/hub", desired_capabilities: caps, http_client: client)
     driver.manage.timeouts.implicit_wait = 3
     driver.navigate.to("http://BigBillyMoneyBags:21b341bf77e44006eeaecf446d4646c546d399792951b989a572ee6dc3240333@192.168.0.1:15123#{message_endpoint}")
     driver.manage.add_cookie(name: "flag", value: "DefinitelyNotFreddieVonChimpenheimer")
@@ -16,7 +20,10 @@ def bill_gates(message_endpoint)
     driver.find_element(xpath: "//input[@value='Create Message']").click
     driver.close
   rescue Exception => e
-    puts "Unable to run Selenium Commands. Encountered Error: #{e.message}\n"	
+    puts "Unable to run Selenium Commands. Encountered Error: #{e.message}\n"
+    if attempt < 2
+      bill_gates(message_endpoint, false, 2)
+    end
   end
 end
 
@@ -43,7 +50,7 @@ Dir[File.expand_path(File.dirname(__FILE__))+"/../cache/messages/*.txt"].each do
     f = File.open(filename, "r")
     bill_gates(f.read)
     f.close
-    #File.delete(filename)
+    File.delete(filename)
   # }.join
 end
 
