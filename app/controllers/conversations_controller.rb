@@ -33,4 +33,21 @@ class ConversationsController < ApplicationController
     @conversation.messages.delete_all
     redirect_to @conversation
   end
+
+  def messages_as_json
+    @conversation = Conversation.friendly.find(params[:conversation_id])
+    output_hash = {}
+    output_hash['display_html?'] = @conversation[:display_html?]
+    messages_array = []
+    @conversation.messages.each do |message|
+      message_hash = {}
+      message_hash['to'] = message.to
+      message_hash['from'] = message.from
+      message_hash['content'] = message.content
+      message_hash['created_at'] = message.created_at
+      messages_array.push message_hash
+    end
+    output_hash['messages'] = messages_array
+    render :json => output_hash
+  end
 end

@@ -1,28 +1,69 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+<script>
+  var last_updated = Date.now();
+  function escapeHtml(text) {
+      return text
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+  }
+  function load_initial_messages(){
+      $.ajax({
+          url: `<%= conversation_messages_as_json_path(@conversation[:hash_id]) %>`,
+          type: "get",
+          cache: false
+      }).done(function( ret ) {
+          ret['messages'].forEach(function(message){
+                if(message['from'] == 'Anon'){
+                    $("#message-history").append(`<strong style="color:blue">From ${message["from"]} to Me</strong><br>`);
+                } else {
+                    $("#message-history").append(`<strong style="color:red">From Me to ${message["to"]}</strong><br>`);
+                }
+                if(ret['display_html?'] == true){
+                    $("#message-history").append(message['content']).append("<br>");
+                } else {
+                    $("#message-history").append(escapeHtml(message['content'])).append("<br>");
+                }
+          });
+      });
+  }
+  function get_new_messages(){
+      $.ajax({
+          url: `<%= conversation_messages_as_json_path(@conversation[:hash_id]) %>`,
+          type: "get",
+          cache: false
+      }).done(function( ret ) {
+          ret['messages'].forEach(function(message){
+              if(Date.parse(message['created_at']) > last_updated){
+                  if(message['from'] == 'Anon'){
+                      $("#message-history").append(`<strong style="color:blue">From ${message["from"]} to Me</strong><br>`);
+                  } else {
+                      $("#message-history").append(`<strong style="color:red">From Me to ${message["to"]}</strong><br>`);
+                  }
+                  if(ret['display_html?'] == true){
+                      $("#message-history").append(message['content']).append("<br>");
+                  } else {
+                      $("#message-history").append(escapeHtml(message['content'])).append("<br>");
+                  }
+              }
+          });
+          last_updated = Date.now();
+      });
+  }
+  load_initial_messages();
+  setInterval("get_new_messages()", 5000);
+  </script>
 
 <div class="container">
   <h1>MysteryRandoChat.io</h1>
   <h2>Conversation with <%= @conversation.user1 %></h2>
 
   <div class="row">
-    <div class="col-lg">
-      <% if @conversation.messages %>
-        <h3>Message History</h3>
-        <% @conversation.messages.each do |message| %>
-          <% if message[:from] == "Anon" %>
-            <strong style="color:blue"> From <%= message[:from] %> to Me</strong><br>
-          <% else %>
-            <strong style="color:red"> From Me to <%= message[:to] %></strong><br>
-          <% end %>
-          <% if @conversation[:display_html?] %>
-            <%= raw message.content %><br>
-          <% else %>
-            <%= message.content %><br>
-          <% end %>
-          <br>
-        <% end %>
-      <% end %>
-    </div>
+    <div class="col-lg" id="message-history"></div>
     <div class="col-2">
       <div class="row">
         <%= button_to "Clear Message History", conversation_clear_history_path(@conversation) %>
