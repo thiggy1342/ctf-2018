@@ -18,7 +18,7 @@
           cache: false
       }).done(function( ret ) {
           ret['messages'].forEach(function(message){
-                if(message['from'] == 'Anon'){
+                if(message['from'] == '???'){
                     $("#message-history").append(`<strong style="color:blue">From ${message["from"]} to Me</strong><br>`);
                 } else {
                     $("#message-history").append(`<strong style="color:red">From Me to ${message["to"]}</strong><br>`);
@@ -84,7 +84,7 @@
         <%= form.hidden_field :from, value: @conversation[:user2] %>
         <%= form.hidden_field :user_generated, value: true %>
         <%= form.text_area :content , value: params[:content], rows: 10, cols: 100, class: "col-lg-auto",style: "min-width: 100%" %><br>
-        <%= form.submit %>
+        <%= form.submit "Send"%>
       </p>
     <% end %>
   </div>
