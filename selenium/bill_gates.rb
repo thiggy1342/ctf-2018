@@ -35,7 +35,7 @@ def get_message
       "http://lmgtfy.com/?s=k&q=how+do+I+mail+cookies",
       "pls send cookies",
       "oatmeal raisin, chocolate chip, snickerdoodle....any would do",
-      "C  O  O  K  I  E  S",
+      "I    N  E  E  D    C  O  O  K  I  E  S",
       "you should check out https://www.reddit.com/r/cookies",
       "try and beat my high score, n00b http://fastfives.mailchimp.com/",
       "bc I look fly in cavendish, that's why!"
