@@ -39,7 +39,7 @@
       }).done(function( ret ) {
           ret['messages'].forEach(function(message){
               if(Date.parse(message['created_at']) > last_updated){
-                  if(message['from'] == 'Anon'){
+                  if(message['from'] == '???'){
                       $("#message-history").append(`<strong style="color:blue">From ${message["from"]} to Me</strong><br>`);
                   } else {
                       $("#message-history").append(`<strong style="color:red">From Me to ${message["to"]}</strong><br>`);
